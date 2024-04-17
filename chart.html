@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .chart-container {
+            width: 400px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            transition: width 0.5s;
+        }
+
+        .chart-bar:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Simple HTML CSS Chart</title>
+</head>
+<body>
+    <div class="chart-container" id="chartContainer"></div>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('data.php');
+            const data = await response.json();
+            updateChart(data);
+        }
+
+        function updateChart(data) {
+            const chartContainer = document.getElementById('chartContainer');
+            chartContainer.innerHTML = '';
+
+            data.forEach(item => {
+                const chartBar = document.createElement('div');
+                chartBar.className = 'chart-bar';
+                chartBar.style.width = item.percentage + '%';
+                chartBar.textContent = item.percentage + '%';
+                chartContainer.appendChild(chartBar);
+            });
+        }
+
+        window.onload = fetchData;
+    </script>
+</body>
+</html>
