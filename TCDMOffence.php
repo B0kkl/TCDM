@@ -717,7 +717,6 @@ if ($role == 'admin') {
         <script>
             document.getElementById('create-btn').addEventListener('click', function () {
 
-                alert($xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
         document.getElementById('overlay').style.display = 'flex';
     });
 
